@@ -1,4 +1,35 @@
 h1 {
-    color: red;
-    font-size: 3rem;
+  position: relative;
+  font-size: 3rem;
+  text-align: center;
+  -webkit-text-fill-color: rgb(175, 78, 78);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(58, 12, 12);
+}
+
+.board__container {
+  position: relative;
+  margin: 0 auto;
+  background-color: rgb(170, 140, 118);
+  box-sizing: content-box;
+  border: 3px solid black;
+  height: fit-content;
+  width: fit-content;
+  padding: 25px;
+}
+
+.gridBlock {
+  --size: 30px;
+  font-size: 1.5rem;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+  background-color: rgb(192, 174, 140);
+  height: var(--size);
+  width: var(--size);
+  margin: 2px 2px;
+  cursor: pointer;
+  overflow: hidden;
 }
