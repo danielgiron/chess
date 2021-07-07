@@ -19,8 +19,8 @@ h1 {
 }
 
 .gridBlock {
-  --size: 30px;
-  font-size: 1.5rem;
+  --size: 35px;
+  font-size: 1.75rem;
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
@@ -29,7 +29,7 @@ h1 {
   background-color: rgb(192, 174, 140);
   height: var(--size);
   width: var(--size);
-  margin: 2px 2px;
+  margin: 1px 1px;
   cursor: pointer;
   overflow: hidden;
 }
