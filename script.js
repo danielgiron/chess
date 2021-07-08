@@ -1,18 +1,6 @@
 //selectors
 boardContainer = document.querySelector(".board__container");
 
-////initializing board
-let board = [];
-
-for (let i = 0; i < 8; i++) {
-  let row = [];
-  for (let n = 0; n < 8; n++) {
-    let cell = "" + i + n;
-    row.push(cell);
-  }
-  board.push(row);
-}
-
 //create all 64 cell divs to make up the board and add "cell" to their classlist
 let letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
 let alpha = 0; //index variable of letters[]
@@ -20,8 +8,8 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 let num = 0; //index variable of numbers[]
 
 let cellFlip = true; //used to create alternating cells classed as "even" or not
-board.forEach((row) => {
-  row.forEach((cell) => {
+letters.forEach((letter) => {
+  numbers.forEach((number) => {
     const newBlock = document.createElement("div");
     newBlock.classList.add("cell");
     if (cellFlip) {
@@ -151,34 +139,41 @@ setup();
 
 //to select cell in boardContainer
 
-var cellStack = [];
-boardContainer.addEventListener("click", moveFunc);
+let cellStack = [];
+boardContainer.addEventListener("click", select);
 
-function moveFunc(event, cellStack) {
-  try {
-    var cell = event.target;
-    console.log(cell.id);
-    if (!cell.innerText === "") {
+function select(event) {
+  //CHECK TARGET CLICKED IS CELL CLASS BEFORE CONTINUING
+  if (event.target.classList.contains("cell")) {
+    try {
+      let cell = event.target;
+      console.log(cell.id);
+
       cellStack.push(cell);
-      console.log(cellStack);
+    } catch {
+      console.log("not a cell");
     }
-  } catch {}
-  console.log(cellStack);
+
+    if (cellStack.length > 1) {
+      let cell1 = document.getElementById(cellStack[0].id);
+      let cell2 = document.getElementById(cellStack[1].id);
+
+      console.log("Cells swapped: ", [cell1, cell2]);
+      let tempCellVal = cell2.innerText;
+
+      cell2.innerText = cell1.innerText;
+      cell1.innerText = tempCellVal;
+
+      cellStack = [];
+    }
+  }
 }
 
-if (!cellStack.length === 1) {
-  let cell1 = cellStack[0];
-  let cell2 = cellStack[1];
-  let tempCellVal = cell2.innerText;
+// boardContainer.addEventListener("click", moveFunc);
 
-  cell2.innerText = cell1.innerText;
-  cell1.innerText = tempCellVal;
-}
-
-// boardContainer.onclick = (e) => {
-//   console.log(e.target.id); // get the element by id
-//   //   var firstCell = document.getElementById(e.target.id);
-//   //   let firstVal = firstCell.innerText;
-//   //   document.title = e.target.id;
-//   //   console.log(firstVal);
-// };
+// function moveFunc(event, cellStack) {
+//   try {
+//     var cell = event.target;
+//     console.log(cell.id);
+//   } catch {}
+// }
