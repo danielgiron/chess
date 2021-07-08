@@ -18,18 +18,27 @@ h1 {
   padding: 25px;
 }
 
-.gridBlock {
-  --size: 35px;
+.cell {
+  --size: 40px;
+  position: relative;
   font-size: 1.75rem;
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid black;
   background-color: rgb(192, 174, 140);
+  border: 1px solid black;
   height: var(--size);
   width: var(--size);
   margin: 1px 1px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.even {
+  background-color: rgb(168, 149, 112);
+}
+
+.selected {
+  background: rgb(230, 203, 154);
 }
