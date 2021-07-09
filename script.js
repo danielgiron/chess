@@ -153,10 +153,210 @@ function hoverOn(event) {
       case "♙":
         pawnMoves(event);
         break;
+      case "♗":
+        bishopMoves(event);
+        break;
+      case "♖":
+        towerMoves(event);
+        break;
     }
     //console.log(possibleMoves);
     highlightPossibleMoves();
     console.log(possibleMoves);
+  }
+}
+
+function towerMoves(event) {
+  let alphaCord = event.target.id[0]; //alpha coordinate
+  let numCord = event.target.id[1]; //number coordinate
+  let cellID1;
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) + 0];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 0] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath2(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) - 0];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath3(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 0] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath4(event, cellID1);
+    }
+  } catch {}
+
+  function straightPath(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) - 1] +
+        numbers[numbers.indexOf(cellID[1]) + 0];
+
+      straightPath(event, nextCellID);
+    }
+  }
+
+  function straightPath2(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) - 0] +
+        numbers[numbers.indexOf(cellID[1]) + 1];
+
+      straightPath2(event, nextCellID);
+    }
+  }
+
+  function straightPath3(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) + 1] +
+        numbers[numbers.indexOf(cellID[1]) - 0];
+
+      straightPath3(event, nextCellID);
+    }
+  }
+
+  function straightPath4(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) + 0] +
+        numbers[numbers.indexOf(cellID[1]) - 1];
+
+      straightPath4(event, nextCellID);
+    }
+  }
+}
+
+function bishopMoves(event) {
+  let alphaCord = event.target.id[0]; //alpha coordinate
+  let numCord = event.target.id[1]; //number coordinate
+  let cellID1;
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      diagonalPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      diagonalPath2(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      diagonalPath3(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      diagonalPath4(event, cellID1);
+    }
+  } catch {}
+
+  function diagonalPath(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) - 1] +
+        numbers[numbers.indexOf(cellID[1]) + 1];
+
+      diagonalPath(event, nextCellID);
+    }
+  }
+
+  function diagonalPath2(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) - 1] +
+        numbers[numbers.indexOf(cellID[1]) - 1];
+
+      diagonalPath2(event, nextCellID);
+    }
+  }
+
+  function diagonalPath3(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) + 1] +
+        numbers[numbers.indexOf(cellID[1]) - 1];
+
+      diagonalPath3(event, nextCellID);
+    }
+  }
+
+  function diagonalPath4(event, cellID) {
+    //console.log(cellID);
+    if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
+      possibleMoves.push(cellID);
+      //console.log(letters.indexOf(cellID[0]) - 1);
+      nextCellID =
+        letters[letters.indexOf(cellID[0]) + 1] +
+        numbers[numbers.indexOf(cellID[1]) + 1];
+
+      diagonalPath4(event, nextCellID);
+    }
   }
 }
 
