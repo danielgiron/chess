@@ -4,7 +4,7 @@ boardContainer = document.querySelector(".board__container");
 //create all 64 cell divs to make up the board and add "cell" to their classlist
 let letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
 let alpha = 0; //index variable of letters[]
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+let numbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
 let num = 0; //index variable of numbers[]
 
 let cellFlip = true; //used to create alternating cells classed as "even" or not
@@ -49,8 +49,8 @@ let pieces = {
   blackPawn8: "b8",
   whiteTower1: "h1",
   whiteTower2: "h8",
-  whiteHorse1: "h2",
-  whiteHorse2: "h7",
+  whiteKnight1: "h2",
+  whiteKnight2: "h7",
   whiteBishop1: "h3",
   whiteBishop2: "h6",
   whiteKing: "h5",
@@ -104,8 +104,8 @@ function setup() {
       case "whiteTower2":
         cell.innerText = "♖";
         break;
-      case "whiteHorse1":
-      case "whiteHorse2":
+      case "whiteKnight1":
+      case "whiteKnight2":
         cell.innerText = "♘";
         break;
       case "whiteBishop1":
@@ -128,8 +128,6 @@ function setup() {
       case "whitePawn8":
         cell.innerText = "♙";
         break;
-      default:
-        break;
     }
   }
 }
@@ -140,7 +138,155 @@ setup();
 //to select cell in boardContainer
 
 let cellStack = [];
+let possibleMoves = []; //contains id's of cells of legal moves
 boardContainer.addEventListener("click", select);
+boardContainer.addEventListener("mouseover", hoverOn);
+boardContainer.addEventListener("mouseout", hoverOff);
+
+function hoverOn(event) {
+  if (event.target.classList.contains("cell")) {
+    //console.log(event.target.id);
+    switch (event.target.innerText) {
+      case "♘":
+        knightMoves(event);
+        break;
+      case "♙":
+        pawnMoves(event);
+        break;
+    }
+    //console.log(possibleMoves);
+    highlightPossibleMoves();
+    console.log(possibleMoves);
+  }
+}
+
+function pawnMoves(event) {
+  let alphaCord = event.target.id[0]; //alpha coordinate
+  let numCord = event.target.id[1]; //number coordinate
+
+  let newAlphaCord = letters[letters.indexOf(alphaCord) - 1];
+
+  let highlightCellID = newAlphaCord + numCord;
+  possibleMoves.push(highlightCellID);
+}
+
+function knightMoves(event) {
+  let alphaCord = event.target.id[0]; //alpha coordinate
+  let numCord = event.target.id[1]; //number coordinate
+
+  try {
+    let cellID1 =
+      letters[letters.indexOf(alphaCord) - 2] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+    }
+  } catch {
+    console.log("Possible move 1 invalid");
+  }
+  try {
+    let cellID2 =
+      letters[letters.indexOf(alphaCord) - 2] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID2[0]) && numbers.includes(cellID2[1])) {
+      possibleMoves.push(cellID2);
+    }
+  } catch {
+    console.log("Possible move 2 invalid");
+  }
+  try {
+    let cellID3 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) + 2];
+    if (letters.includes(cellID3[0]) && numbers.includes(cellID3[1])) {
+      possibleMoves.push(cellID3);
+    }
+  } catch {
+    console.log("Possible move 3 invalid");
+  }
+  try {
+    let cellID4 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) + 2];
+    if (letters.includes(cellID4[0]) && numbers.includes(cellID4[1])) {
+      possibleMoves.push(cellID4);
+    }
+  } catch {
+    console.log("Possible move 4 invalid");
+  }
+  try {
+    ///TEST THIS ONE FOR OUT OF BOUNDS
+    let cellID5 =
+      letters[letters.indexOf(alphaCord) + 2] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID5[0]) && numbers.includes(cellID5[1])) {
+      possibleMoves.push(cellID5);
+    }
+  } catch {
+    console.log("Possible move 5 invalid");
+  }
+  try {
+    let cellID6 =
+      letters[letters.indexOf(alphaCord) + 2] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID6[0]) && numbers.includes(cellID6[1])) {
+      possibleMoves.push(cellID6);
+    }
+  } catch {
+    console.log("Possible move 6 invalid");
+  }
+  try {
+    let cellID7 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) - 2];
+    if (letters.includes(cellID7[0]) && numbers.includes(cellID7[1])) {
+      possibleMoves.push(cellID7);
+    }
+  } catch {
+    console.log("Possible move 7 invalid");
+  }
+  try {
+    let cellID8 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) - 2];
+    if (letters.includes(cellID8[0]) && numbers.includes(cellID8[1])) {
+      possibleMoves.push(cellID8);
+    }
+  } catch {
+    console.log("Possible move 8 invalid");
+  }
+}
+
+function highlightPossibleMoves() {
+  possibleMoves.forEach((cellID) => {
+    try {
+      let highlightCell = document.getElementById(cellID);
+      highlightCell.classList.add("light");
+    } catch {}
+  });
+}
+
+function hoverOff(event) {
+  //if (event.target.classList.contains("cell")) {
+  dimPossibleMoves();
+  //}
+}
+
+function dimPossibleMoves() {
+  possibleMoves.forEach((cellID) => {
+    try {
+      let cells = boardContainer.children;
+      for (let i = 0; i < cells.length; i++) {
+        let cell = cells[i];
+        if (cell.classList.contains("cell")) {
+          cell.classList.remove("light");
+        }
+      }
+
+      possibleMoves = [];
+    } catch {}
+  });
+}
 
 function select(event) {
   //CHECK TARGET CLICKED IS CELL CLASS BEFORE CONTINUING
@@ -168,12 +314,3 @@ function select(event) {
     }
   }
 }
-
-// boardContainer.addEventListener("click", moveFunc);
-
-// function moveFunc(event, cellStack) {
-//   try {
-//     var cell = event.target;
-//     console.log(cell.id);
-//   } catch {}
-// }

@@ -42,3 +42,7 @@ h1 {
 .selected {
   background: rgb(230, 203, 154);
 }
+
+.light {
+  background-color: gold;
+}
