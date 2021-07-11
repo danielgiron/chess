@@ -159,11 +159,104 @@ function hoverOn(event) {
       case "♖":
         towerMoves(event);
         break;
+      case "♕":
+        towerMoves(event);
+        bishopMoves(event);
+        break;
+      case "♔":
+        kingMoves(event);
+        break;
     }
     //console.log(possibleMoves);
     highlightPossibleMoves();
     console.log(possibleMoves);
   }
+}
+
+function kingMoves(event) {
+  let alphaCord = event.target.id[0]; //alpha coordinate
+  let numCord = event.target.id[1]; //number coordinate
+  let cellID1;
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) + 0];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord)] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) + 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) + 0];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) + 1] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord)] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
+
+  try {
+    cellID1 =
+      letters[letters.indexOf(alphaCord) - 1] +
+      numbers[numbers.indexOf(numCord) - 1];
+    if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
+      possibleMoves.push(cellID1);
+      straightPath(event, cellID1);
+    }
+  } catch {}
 }
 
 function towerMoves(event) {
