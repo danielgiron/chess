@@ -183,8 +183,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) + 0];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -193,8 +194,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -203,8 +205,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord)] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -213,8 +216,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -223,8 +227,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) + 0];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -233,8 +238,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -243,8 +249,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord)] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 
@@ -253,8 +260,9 @@ function kingMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {}
 }
@@ -268,8 +276,10 @@ function towerMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) + 0];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        straightPath(event, cellID1);
+      }
     }
   } catch {}
 
@@ -278,8 +288,10 @@ function towerMoves(event) {
       letters[letters.indexOf(alphaCord) - 0] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath2(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        straightPath2(event, cellID1);
+      }
     }
   } catch {}
 
@@ -288,8 +300,10 @@ function towerMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) - 0];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath3(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        straightPath3(event, cellID1);
+      }
     }
   } catch {}
 
@@ -298,8 +312,10 @@ function towerMoves(event) {
       letters[letters.indexOf(alphaCord) + 0] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      straightPath4(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        straightPath4(event, cellID1);
+      }
     }
   } catch {}
 
@@ -307,12 +323,13 @@ function towerMoves(event) {
     //console.log(cellID);
     if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
       possibleMoves.push(cellID);
-      //console.log(letters.indexOf(cellID[0]) - 1);
+
       nextCellID =
         letters[letters.indexOf(cellID[0]) - 1] +
         numbers[numbers.indexOf(cellID[1]) + 0];
-
-      straightPath(event, nextCellID);
+      if (document.getElementById(nextCellID).innerText === "") {
+        straightPath(event, nextCellID);
+      }
     }
   }
 
@@ -320,12 +337,13 @@ function towerMoves(event) {
     //console.log(cellID);
     if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
       possibleMoves.push(cellID);
-      //console.log(letters.indexOf(cellID[0]) - 1);
-      nextCellID =
-        letters[letters.indexOf(cellID[0]) - 0] +
-        numbers[numbers.indexOf(cellID[1]) + 1];
 
-      straightPath2(event, nextCellID);
+      nextCellID =
+        letters[letters.indexOf(cellID[0])] +
+        numbers[numbers.indexOf(cellID[1]) + 1];
+      if (document.getElementById(nextCellID).innerText === "") {
+        straightPath2(event, nextCellID);
+      }
     }
   }
 
@@ -333,12 +351,13 @@ function towerMoves(event) {
     //console.log(cellID);
     if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
       possibleMoves.push(cellID);
-      //console.log(letters.indexOf(cellID[0]) - 1);
+
       nextCellID =
         letters[letters.indexOf(cellID[0]) + 1] +
-        numbers[numbers.indexOf(cellID[1]) - 0];
-
-      straightPath3(event, nextCellID);
+        numbers[numbers.indexOf(cellID[1]) + 0];
+      if (document.getElementById(nextCellID).innerText === "") {
+        straightPath3(event, nextCellID);
+      }
     }
   }
 
@@ -346,12 +365,13 @@ function towerMoves(event) {
     //console.log(cellID);
     if (letters.includes(cellID[0]) && numbers.includes(cellID[1])) {
       possibleMoves.push(cellID);
-      //console.log(letters.indexOf(cellID[0]) - 1);
+
       nextCellID =
         letters[letters.indexOf(cellID[0]) + 0] +
         numbers[numbers.indexOf(cellID[1]) - 1];
-
-      straightPath4(event, nextCellID);
+      if (document.getElementById(nextCellID).innerText === "") {
+        straightPath4(event, nextCellID);
+      }
     }
   }
 }
@@ -365,8 +385,10 @@ function bishopMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      diagonalPath(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        diagonalPath(event, cellID1);
+      }
     }
   } catch {}
 
@@ -375,8 +397,10 @@ function bishopMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      diagonalPath2(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        diagonalPath2(event, cellID1);
+      }
     }
   } catch {}
 
@@ -385,8 +409,10 @@ function bishopMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      diagonalPath3(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        diagonalPath3(event, cellID1);
+      }
     }
   } catch {}
 
@@ -395,8 +421,10 @@ function bishopMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
-      diagonalPath4(event, cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+        diagonalPath4(event, cellID1);
+      }
     }
   } catch {}
 
@@ -409,7 +437,10 @@ function bishopMoves(event) {
         letters[letters.indexOf(cellID[0]) - 1] +
         numbers[numbers.indexOf(cellID[1]) + 1];
 
-      diagonalPath(event, nextCellID);
+      if (document.getElementById(nextCellID).innerText === "") {
+        possibleMoves.push(nextCellID);
+        diagonalPath(event, nextCellID);
+      }
     }
   }
 
@@ -422,7 +453,10 @@ function bishopMoves(event) {
         letters[letters.indexOf(cellID[0]) - 1] +
         numbers[numbers.indexOf(cellID[1]) - 1];
 
-      diagonalPath2(event, nextCellID);
+      if (document.getElementById(nextCellID).innerText === "") {
+        possibleMoves.push(nextCellID);
+        diagonalPath2(event, nextCellID);
+      }
     }
   }
 
@@ -434,8 +468,10 @@ function bishopMoves(event) {
       nextCellID =
         letters[letters.indexOf(cellID[0]) + 1] +
         numbers[numbers.indexOf(cellID[1]) - 1];
-
-      diagonalPath3(event, nextCellID);
+      if (document.getElementById(nextCellID).innerText === "") {
+        possibleMoves.push(nextCellID);
+        diagonalPath3(event, nextCellID);
+      }
     }
   }
 
@@ -448,7 +484,10 @@ function bishopMoves(event) {
         letters[letters.indexOf(cellID[0]) + 1] +
         numbers[numbers.indexOf(cellID[1]) + 1];
 
-      diagonalPath4(event, nextCellID);
+      if (document.getElementById(nextCellID).innerText === "") {
+        possibleMoves.push(nextCellID);
+        diagonalPath4(event, nextCellID);
+      }
     }
   }
 }
@@ -460,7 +499,9 @@ function pawnMoves(event) {
   let newAlphaCord = letters[letters.indexOf(alphaCord) - 1];
 
   let highlightCellID = newAlphaCord + numCord;
-  possibleMoves.push(highlightCellID);
+  if (document.getElementById(highlightCellID).innerText === "") {
+    possibleMoves.push(highlightCellID);
+  }
 }
 
 function knightMoves(event) {
@@ -472,7 +513,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) - 2] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID1[0]) && numbers.includes(cellID1[1])) {
-      possibleMoves.push(cellID1);
+      if (document.getElementById(cellID1).innerText === "") {
+        possibleMoves.push(cellID1);
+      }
     }
   } catch {
     console.log("Possible move 1 invalid");
@@ -482,7 +525,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) - 2] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID2[0]) && numbers.includes(cellID2[1])) {
-      possibleMoves.push(cellID2);
+      if (document.getElementById(cellID2).innerText === "") {
+        possibleMoves.push(cellID2);
+      }
     }
   } catch {
     console.log("Possible move 2 invalid");
@@ -492,7 +537,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) + 2];
     if (letters.includes(cellID3[0]) && numbers.includes(cellID3[1])) {
-      possibleMoves.push(cellID3);
+      if (document.getElementById(cellID3).innerText === "") {
+        possibleMoves.push(cellID3);
+      }
     }
   } catch {
     console.log("Possible move 3 invalid");
@@ -502,7 +549,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) + 2];
     if (letters.includes(cellID4[0]) && numbers.includes(cellID4[1])) {
-      possibleMoves.push(cellID4);
+      if (document.getElementById(cellID4).innerText === "") {
+        possibleMoves.push(cellID4);
+      }
     }
   } catch {
     console.log("Possible move 4 invalid");
@@ -513,7 +562,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) + 2] +
       numbers[numbers.indexOf(numCord) + 1];
     if (letters.includes(cellID5[0]) && numbers.includes(cellID5[1])) {
-      possibleMoves.push(cellID5);
+      if (document.getElementById(cellID5).innerText === "") {
+        possibleMoves.push(cellID5);
+      }
     }
   } catch {
     console.log("Possible move 5 invalid");
@@ -523,7 +574,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) + 2] +
       numbers[numbers.indexOf(numCord) - 1];
     if (letters.includes(cellID6[0]) && numbers.includes(cellID6[1])) {
-      possibleMoves.push(cellID6);
+      if (document.getElementById(cellID6).innerText === "") {
+        possibleMoves.push(cellID6);
+      }
     }
   } catch {
     console.log("Possible move 6 invalid");
@@ -533,7 +586,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) - 1] +
       numbers[numbers.indexOf(numCord) - 2];
     if (letters.includes(cellID7[0]) && numbers.includes(cellID7[1])) {
-      possibleMoves.push(cellID7);
+      if (document.getElementById(cellID7).innerText === "") {
+        possibleMoves.push(cellID7);
+      }
     }
   } catch {
     console.log("Possible move 7 invalid");
@@ -543,7 +598,9 @@ function knightMoves(event) {
       letters[letters.indexOf(alphaCord) + 1] +
       numbers[numbers.indexOf(numCord) - 2];
     if (letters.includes(cellID8[0]) && numbers.includes(cellID8[1])) {
-      possibleMoves.push(cellID8);
+      if (document.getElementById(cellID8).innerText === "") {
+        possibleMoves.push(cellID8);
+      }
     }
   } catch {
     console.log("Possible move 8 invalid");
@@ -554,7 +611,9 @@ function highlightPossibleMoves() {
   possibleMoves.forEach((cellID) => {
     try {
       let highlightCell = document.getElementById(cellID);
+      //if (highlightCell.innerText === "") {
       highlightCell.classList.add("light");
+      //}
     } catch {}
   });
 }
